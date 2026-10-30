@@ -1,7 +1,7 @@
 """Lyons' integrator test re-read with the complex relative error.
 
 Companion code for I. Krstic, "Reading the Frequency Response Right: How to Predict
-the Accuracy of Digital Integrators" (IEEE SPM, DSP Tips & Tricks).
+the Accuracy of Digital Integrators".
 
 Test: R. Lyons, "The risk in using frequency domain curves to evaluate digital
 integrator performance," DSPRelated.com, 2019 - seven test signals, N = 24 intervals.
