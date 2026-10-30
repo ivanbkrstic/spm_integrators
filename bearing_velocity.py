@@ -1,7 +1,7 @@
 """Real-time velocity from measured bearing vibration (CWRU Bearing Data Center).
 
 Companion code for I. Krstic, "Reading the Frequency Response Right: How to Predict
-the Accuracy of Digital Integrators" (IEEE SPM, DSP Tips & Tricks), Fig. 2.
+the Accuracy of Digital Integrators", Fig. 2.
 
 Data: drive-end accelerometer records 97 (normal), 109 (inner-race fault) and 135
 (outer-race fault), 48 kHz, 1796 rpm, from https://engineering.case.edu/bearingdatacenter
