@@ -1,7 +1,7 @@
 """Seven integration rules of an earthquake-engineering assessment, read at the right instant.
 
 Companion code for I. Krstic, "Reading the Frequency Response Right: How to Predict
-the Accuracy of Digital Integrators" (IEEE SPM, DSP Tips & Tricks).
+the Accuracy of Digital Integrators".
 
 Assessment: J. Arias-Trujillo, R. Blazquez, S. Lopez-Querol, "Frequency-domain assessment
 of integration schemes for earthquake engineering problems," Math. Probl. Eng., 2015.
