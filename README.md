@@ -1,7 +1,7 @@
 # Reading the Frequency Response Right — code
 
 Companion code for I. Krstić, "Reading the Frequency Response Right: How to Predict the
-Accuracy of Digital Integrators,"
+Accuracy of Digital Integrators"
 
 Three independent scripts (Python 3, numpy, scipy; matplotlib only for `--plot`):
 
