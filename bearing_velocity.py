@@ -1,9 +1,8 @@
 """Real-time velocity from measured bearing vibration (CWRU Bearing Data Center).
 
 Companion code for the manuscript I. Krstic, "Reading the Frequency Response Right:
-How to Predict the Accuracy of Digital Integrators," submitted to IEEE Signal Processing
-Magazine (DSP Tips & Tricks). Equation, figure and table numbers refer to the submitted
-manuscript.
+How to Predict the Accuracy of Digital Integrators." Equation, figure and table numbers
+refer to the manuscript.
 
 Reproduces Fig. 2 and the agreement of Eq. (10) with the measured errors.
 

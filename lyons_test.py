@@ -1,12 +1,11 @@
 """Lyons' integrator test re-read with the complex relative error.
 
 Companion code for the manuscript I. Krstic, "Reading the Frequency Response Right:
-How to Predict the Accuracy of Digital Integrators," submitted to IEEE Signal Processing
-Magazine (DSP Tips & Tricks). Equation, figure and table numbers refer to the submitted
-manuscript.
+How to Predict the Accuracy of Digital Integrators." Equation, figure and table numbers
+refer to the manuscript.
 
 Reproduces: the errors of Lyons' test (introduction), Table I (leading terms of eps and
-orders q, exact rational arithmetic), the worked example, the real-sinusoid example,
+orders q, exact rational arithmetic), "How many samples per period?", the real-sinusoid example,
 the shift correction (9), the best reading instant of the Al-Alaoui integrator, and the
 finite-record example (zero padding, extrapolation, Gregory's end weights).
 
@@ -255,12 +254,14 @@ def main():
             form = form.split(" ")[0]; form = f"{float(Fraction(form)):.5f} w^2"
         print("  %-24s b = %-28s r = %-4s eps ~ %-22s q = %d" % (name, ", ".join(half), r, form, q))
 
-    # worked example: trapezoidal rule, sin(t) on [0, 13pi/3]
+    # "How many samples per period?": trapezoidal rule, sin(t) on [0, 13pi/3]
     w0 = 13 * np.pi / 72
-    print("\nWorked example: trapezoidal, w0 = 13pi/72: eps(w0) = %.2f%%, -w0^2/12 = %.2f%%"
+    print("\nHow many samples per period? trapezoidal, w0 = 13pi/72: eps(w0) = %.2f%%, -w0^2/12 = %.2f%%"
           % (100 * eps(np.array([0.5, 0.5]), 1, 0, w0)[0].real, -100 * w0**2 / 12))
     print("  |eps| < 1%% requires w < %.3f rad/sample, i.e., %.1f samples per period"
           % (np.sqrt(0.12), 2 * np.pi / np.sqrt(0.12)))
+    print("  pi/9 = %.3f rad/sample (18 samples per period); Lyons' sin(t): w0 = %.3f pi, %.2f samples per period"
+          % (np.pi / 9, w0 / np.pi, 2 * np.pi / w0))
 
     # finite records: MF(4,1), sin(t)+0.25 on [0, 4]
     f, a, b, _ = SIGNALS[3]; b41 = mf(4, 1)

@@ -1,9 +1,8 @@
 """Fig. 1: complex relative error |eps(w)| of the integrators of both evaluations.
 
 Companion code for the manuscript I. Krstic, "Reading the Frequency Response Right:
-How to Predict the Accuracy of Digital Integrators," submitted to IEEE Signal Processing
-Magazine (DSP Tips & Tricks). Equation, figure and table numbers refer to the submitted
-manuscript.
+How to Predict the Accuracy of Digital Integrators." Equation, figure and table numbers
+refer to the manuscript.
 
 Dashed: read at offset r = 0, as in the two evaluations; solid: read at the right
 instant; dotted: magnitude error |w|H| - 1| of the Al-Alaoui integrator, which is what
