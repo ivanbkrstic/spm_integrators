@@ -1,7 +1,9 @@
 """Seven integration rules of an earthquake-engineering assessment, read at the right instant.
 
-Companion code for I. Krstic, "Reading the Frequency Response Right: How to Predict
-the Accuracy of Digital Integrators".
+Companion code for the manuscript I. Krstic, "Reading the Frequency Response Right:
+How to Predict the Accuracy of Digital Integrators," submitted to IEEE Signal Processing
+Magazine (DSP Tips & Tricks). Equation, figure and table numbers refer to the submitted
+manuscript.
 
 Assessment: J. Arias-Trujillo, R. Blazquez, S. Lopez-Querol, "Frequency-domain assessment
 of integration schemes for earthquake engineering problems," Math. Probl. Eng., 2015.
@@ -11,16 +13,18 @@ Every rule is written as  y[n] - y[n-K] = sum_k b_k x[n-k]  (T = 1), with group 
 Complex relative error at reading offset r:  eps(w) = j w e^{j w r} H(e^{jw}) - 1.
 
 Parts
- 1. worst-case |eps| on [0, pi/2], read at offset 0 and at tau (Fig. 1(d));
- 2. Example 1 of the assessment (sine acceleration): the rectangular rule attenuates
-    read at offset 0 but amplifies read at tau = 1/2, as its magnitude ratio says;
+ 1. worst-case |eps| on [0, pi/2], read at offset 0 and at tau (Fig. 1);
+ 2. Example 1 of the assessment (sine acceleration), an additional check: the
+    rectangular rule attenuates read at offset 0 but amplifies read at tau = 1/2,
+    as its magnitude ratio says;
  3. Example 3 (Bogdanoff's accelerogram, random phases): peak velocities are blind to the
     3-sample delay of the Schuessler-Ibler integrator, the RMS waveform error is not;
     RMS error from the amplitude spectrum by Eq. (10).
 
-Run:   python seismic_rules.py           (numbers only)
-       python seismic_rules.py --plot    (also seismic_rules.png, needs matplotlib)
-Requirements: numpy, scipy (matplotlib optional).
+Run:   python seismic_rules.py
+Requirements: numpy, scipy.
+
+Repository: https://github.com/ivanbkrstic/spm_integrators
 """
 import sys
 from math import ceil
@@ -154,23 +158,5 @@ def part3(realizations=20, seed=2015):
             print("   %-17s %-7s %10.3f %12.3f %14.3f" % (n, lab, *med))
 
 
-def plot():
-    import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
-    lam = np.linspace(0.003, 0.997, 1200); w = lam * np.pi
-    fig, ax = plt.subplots(figsize=(6, 4))
-    for n, (b, K, tau) in RULES.items():
-        if K == 4:
-            continue
-        l, = ax.plot(lam, 20*np.log10(np.abs(eps(b, K, tau, w))), lw=1, label=n + " (tau)")
-        if tau != 0:
-            ax.plot(lam, 20*np.log10(np.abs(eps(b, K, 0.0, w))), "--", color=l.get_color(), lw=1,
-                    label=n + " (offset 0)")
-    ax.set_xlim(0, 1); ax.set_ylim(-100, 20); ax.set_xlabel("w/pi"); ax.set_ylabel("20 log10 |eps(w)|")
-    ax.legend(fontsize=7); fig.tight_layout(); fig.savefig("seismic_rules.png", dpi=120)
-    print("saved seismic_rules.png")
-
-
 if __name__ == "__main__":
     part1(); part2(); part3()
-    if "--plot" in sys.argv:
-        plot()
